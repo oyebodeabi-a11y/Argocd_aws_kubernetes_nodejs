@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-deployment
+  labels:
+    app: dockerapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dockerapp
+  template:
+    metadata:
+      labels:
+        app: dockerapp
+    spec:
+      containers:
+      - name: dockerapp
+        image: bims15/version1
+        ports:
+        - containerPort: 8080
